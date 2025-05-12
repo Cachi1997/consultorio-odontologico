@@ -1,5 +1,6 @@
 package logica;
 
+import java.util.ArrayList;
 import java.util.List;
 import persistencia.ControladoraPersistencia;
 
@@ -29,5 +30,23 @@ public class Controladora {
 
     public void editarUsuario(Usuario usu) {
         controlPersis.editarUsuario(usu);
+    }
+
+    public boolean comprobarIngreso(String usuario, String contrasenia) {
+        boolean ingreso = false;
+        
+        List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+        listaUsuarios = controlPersis.getUsuarios();
+        
+        for(Usuario usu: listaUsuarios){
+            if(usu.getNombreUsuario().equals(usuario)){
+                if(usu.getContraseña().equals(contrasenia)){
+                    ingreso = true;
+                }else{
+                    ingreso = false;
+                }
+            }
+        }
+        return ingreso;
     }
 }
