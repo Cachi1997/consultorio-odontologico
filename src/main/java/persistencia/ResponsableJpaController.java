@@ -25,15 +25,14 @@ public class ResponsableJpaController implements Serializable {
     public ResponsableJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
-    public ResponsableJpaController() {
-        emf = Persistence.createEntityManagerFactory("ConsultorioOdontologico_PU");
-    }
-    
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
+    }
+    
+    public ResponsableJpaController() {
+        emf = Persistence.createEntityManagerFactory("ConsultorioOdontologico_PU");
     }
 
     public void create(Responsable responsable) {

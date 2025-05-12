@@ -25,15 +25,14 @@ public class PersonaJpaController implements Serializable {
     public PersonaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
-    public PersonaJpaController() {
-        emf = Persistence.createEntityManagerFactory("ConsultorioOdontologico_PU");
-    }
-    
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
+    }
+    
+    public PersonaJpaController() {
+        emf = Persistence.createEntityManagerFactory("ConsultorioOdontologico_PU");
     }
 
     public void create(Persona persona) {
